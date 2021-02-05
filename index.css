@@ -42,3 +42,8 @@ input:focus {
 input {
     padding: 1vmin;
 }
+
+canvas {
+    max-width: 25rem;
+    margin: auto;
+}
