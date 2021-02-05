@@ -1,0 +1,44 @@
+* {
+    color: purple;
+    font-size: 1.5rem;
+    font-family: Palatino;
+}
+
+main {
+    border-color: purple;
+    border-radius: 2vmin;
+    border-style: ridge;
+    border-width: 1vmin;
+    border-bottom-width: 2vmin;
+    border-right-width: 2vmin;
+    max-width: 50rem;
+    margin: auto;
+    padding: 1vmin;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+ul > li {
+    list-style: none;
+    border-radius: 1vmin;
+    padding: 1vmin;
+    margin: 1vmin;
+    background-color: #80008011; /* purple */
+    text-align: center;
+}
+
+section.cat > ul > li:before {
+    content: '🐱';
+    padding-right: 1vmin;
+}
+
+input:focus {
+    outline: 0.3vmin solid purple
+}
+
+input {
+    padding: 1vmin;
+}
