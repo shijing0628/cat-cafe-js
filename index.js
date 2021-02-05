@@ -58,7 +58,7 @@ $('document').ready(function(){
     const dataSet = {
         labels: breeds,
         datasets:[{
-            backgroundColor: '#eeeeee',
+            backgroundColor: 'purple',
             borderColor: '#eeeeee',
             borderWidth: 1,
             data: numbers
@@ -77,8 +77,18 @@ $('document').ready(function(){
             scales: {
                 yAxes: [{
                     ticks: {
+                        fontFamily: 'Palatino',
+                        fontSize: 15,
+                        fontColor: 'purple',
                         beginAtZero: true,
                         precision: 0
+                    }
+                }],
+                xAxes: [{
+                    ticks: {
+                        fontFamily: 'Palatino',
+                        fontSize: 15,
+                        fontColor: 'purple'
                     }
                 }]
             }
