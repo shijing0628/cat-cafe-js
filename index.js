@@ -20,34 +20,9 @@ const getBreedNumbers = (breeds, cats) => {
     return numbers;
 }
 
-function getCats() {
-    return [
-        {
-          "id": "287e3da1-c4b2-4ec3-ae18-39bdd5903f3a",
-          "name": "Tuna",
-          "breed": "Siamese"
-        },
-        {
-          "id": "2823c2e1-9cbf-470a-88dc-bc8691f4d65f",
-          "name": "Chester",
-          "breed": "Tabby"
-        },
-        {
-          "id": "2f6a0a8b-1fd4-4294-b7e5-21857903fa99",
-          "name": "Blue",
-          "breed": "Naked"
-        },
-        {
-          "id": "76084262-9ee3-40af-ab29-fa1ce6cb99a8",
-          "name": "Cindy",
-          "breed": "Tabby"
-        },
-        {
-          "id": "305eb915-1c40-4db7-928a-abbf1014ab6d",
-          "name": "Sally",
-          "breed": "Burmese"
-        }
-      ];      
+async function getCats() {
+    const request = await fetch('http://localhost:3500/cats');
+    return request.json();      
 }
 
 const renderCats = cats => {
@@ -58,12 +33,31 @@ const renderCats = cats => {
     });
 }
 
-$('document').ready(function(){
-    cats = getCats();
+const listenForNew = () => {
+    let inputs = document.querySelectorAll('input');
+    inputs.forEach(
+        input => input.addEventListener('keypress', async function (e) {
+            if (e.key === 'Enter' && inputs[0].value && inputs[1].value) {
+                const cat = {
+                    name: inputs[0].value,
+                    breed: inputs[1].value 
+                }
+                inputs[0].value = "";
+                inputs[1].value = "";
+                await fetch('http://localhost:3500/cats', { method:'post', body: JSON.stringify(cat), headers: { "Content-Type": 'application/json'}});
+                location.reload();
+            }
+        })
+    )
+}
+
+$('document').ready(async function(){
+    cats = await getCats();
     breeds = getBreeds(cats);
     numbers = getBreedNumbers(breeds, cats);
 
     renderCats(cats);
+    listenForNew();
 
     const dataSet = {
         labels: breeds,
