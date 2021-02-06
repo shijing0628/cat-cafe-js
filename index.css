@@ -30,7 +30,7 @@ ul > li {
     text-align: center;
 }
 
-section.cat > ul > li:before {
+section.cats > ul > li:before {
     content: '🐱';
     padding-right: 1vmin;
 }

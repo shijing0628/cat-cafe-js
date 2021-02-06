@@ -50,10 +50,20 @@ function getCats() {
       ];      
 }
 
+const renderCats = cats => {
+    cats.forEach(cat => {
+        const element = document.createElement('li')
+        element.innerText = cat.name;
+        document.querySelector(".cats > ul").append(element);
+    });
+}
+
 $('document').ready(function(){
     cats = getCats();
     breeds = getBreeds(cats);
     numbers = getBreedNumbers(breeds, cats);
+
+    renderCats(cats);
 
     const dataSet = {
         labels: breeds,
